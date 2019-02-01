@@ -1,0 +1,37 @@
+{
+  "name": "azure-functions-typescript-boilerplate",
+  "version": "1.0.0",
+  "description": "An Azure Functions with Typescript boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "new": "cd src && func new",
+    "serve": "tsc && cd src && func host start && rimraf **/*.js **/*.map",
+    "build": "rimraf dist && tsc --outDir dist --sourceMap false && copyfiles package.json dist && cd src && copyfiles host.json local.settings.json */function.json ../dist",
+    "clean": "rimraf dist src/**/*.js src/**/*.map"
+  },
+  "author": "Fernando Escolar <f.escolar@hotmail.com>",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "@azure/functions": "^1.0.1-beta2",
+    "azure-functions-core-tools": "^2.4.317",
+    "copyfiles": "^2.1.0",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.3.1"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fernandoescolar/azure-functions-typescript-boilerplate.git"
+  },
+  "keywords": [
+    "azure",
+    "functions",
+    "typescript",
+    "node",
+    "serverless"
+  ],
+  "bugs": {
+    "url": "https://github.com/fernandoescolar/azure-functions-typescript-boilerplate/issues"
+  },
+  "homepage": "https://github.com/fernandoescolar/azure-functions-typescript-boilerplate#readme"
+}
