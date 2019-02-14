@@ -6,14 +6,15 @@
   "scripts": {
     "new": "cd src && func new",
     "serve": "tsc && cd src && func host start && rimraf **/*.js **/*.map",
-    "build": "rimraf dist && tsc --outDir dist --sourceMap false && copyfiles package.json dist && cd src && copyfiles host.json local.settings.json */function.json ../dist",
-    "clean": "rimraf dist src/**/*.js src/**/*.map"
+    "build": "tsc && funcpack pack ./src --copyToOutput && cd src && copyfiles host.json local.settings.json *.csproj ../dist && cd .funcpack && copyfiles **/* ../../dist && cd .. && rimraf .funcpack",
+    "clean": "rimraf dist src/**/*.js src/**/*.map src/.funcpack"
   },
   "author": "Fernando Escolar <f.escolar@hotmail.com>",
   "license": "CC-BY-4.0",
   "devDependencies": {
     "@azure/functions": "^1.0.1-beta2",
     "azure-functions-core-tools": "^2.4.317",
+    "azure-functions-pack": "^1.0.0",
     "copyfiles": "^2.1.0",
     "rimraf": "^2.6.3",
     "typescript": "^3.3.1"
